@@ -455,20 +455,21 @@ function hmrAcceptRun(bundle, id) {
 }
 
 },{}]},["7mHCm"], null, "parcelRequire94c2")
-const div1 = document.querySelector("#div1");
 setTimeout(()=>{
     const button = document.createElement("button");
     button.textContent = "click1";
     button.dataset.id = 1;
     div1.appendChild(button);
 }, 1000);
-div1.addEventListener("click", (e)=>{
-    const t = e.target;
-    if (t.tagName.toLowerCase() === "button") {
-        console.log("button被点击了");
-        console.log("被点击的button是:" + t.textContent);
-        console.log("被点击的button dataset-id是:" + t.dataset.id);
-    }
+on("click", "#div1", "button", ()=>{
+    console.log("button被点击了");
 });
+function on(eventType, element, selector, fn) {
+    element = document.querySelector(element);
+    element.addEventListener(eventType, (e)=>{
+        const t = e.target;
+        if (t.matches(selector)) fn(e);
+    });
+}
 
 //# sourceMappingURL=index.fef1cfaf.js.map
