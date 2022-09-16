@@ -8,7 +8,7 @@ on("click", "#div1", "button", () => {
   console.log("button被点击了");
 });
 function on(eventType, element, selector, fn) {
-  if (element instanceof Element) {
+  if (!element instanceof Element) {
     element = document.querySelector(element);
   }
 
